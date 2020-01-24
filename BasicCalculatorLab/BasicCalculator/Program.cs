@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace BasicCalculator
+namespace BasicWeatherCalculator
 {
     class Program
     {
@@ -8,17 +8,29 @@ namespace BasicCalculator
         {
             Console.WriteLine("*** BASIC CALCULATOR ***");
 
-            Console.WriteLine("Enter the first number");
+            Console.WriteLine("Enter the temperature (in degrees F)");
 
-            // int.Parse will take a string data type and convert it to an int data type
-            int firstNumber = int.Parse(Console.ReadLine());
+            int Temperature = int.Parse(Console.ReadLine());
 
-            Console.WriteLine("Enter the second number");
-            int secondNumber = int.Parse(Console.ReadLine());
+            Console.WriteLine("Enter the Humidity");
+            int Humidity = int.Parse(Console.ReadLine());
 
-            int sum = firstNumber + secondNumber;
+            int dewpoint = Temperature - 9 * (100 - Humidity) / 25;
 
-            Console.WriteLine("The answer is " + sum);
+            Console.WriteLine("The Dew Point is" + dewpoint);
+
+
+            Console.WriteLine("Enter the Wind Speed");
+            int windspeed = int.Parse(Console.ReadLine());
+
+
+            double windchill = 35.74
+                + (0.6215 * Temperature)
+                - 35.75 * Math.Pow(windspeed, .16)
+                + .4275 * Temperature * Math.Pow(windspeed, .16);
+            
+                Console.WriteLine ("The Wind Chill is"+windchill);
         }
+
     }
 }
